@@ -4,7 +4,8 @@ import * as Yup from 'yup';
 import s from './ContactForm.module.css';
 import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice';
+
+import { addContactThunk } from '../../redux/contactsOps';
 
 const contactFormSchema = Yup.object().shape({
   name: Yup.string()
@@ -23,7 +24,7 @@ const initialValues = { name: '', number: '' };
 const ContactForm = () => {
   const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
-    dispatch(addContact({ id: nanoid(), ...values }));
+    dispatch(addContactThunk({ id: nanoid(), ...values }));
     actions.resetForm();
   };
   return (

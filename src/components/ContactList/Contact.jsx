@@ -3,7 +3,8 @@ import { FaPhone } from 'react-icons/fa6';
 import { BiSolidContact } from 'react-icons/bi';
 import s from './Contacts.module.css';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsSlice';
+
+import { deleteContactThunk } from '../../redux/contactsOps';
 
 const Contact = ({ contact }) => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const Contact = ({ contact }) => {
         </div>
         <Button
           className={s.contactDeleteBtn}
-          onClick={() => dispatch(deleteContact(contact.id))}
+          onClick={() => dispatch(deleteContactThunk(contact.id))}
         >
           Delete
         </Button>
